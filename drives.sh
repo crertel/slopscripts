@@ -327,7 +327,7 @@ print_drive_table() {
         fi
         
         IFS='|' read -r health hours temp realloc pending uncorrect cycles wear <<< "$smart_data"
-        
+        wear="${wear#0*}"
         # Calculate total errors
         local total_errors=0
         [[ "$realloc" =~ ^[0-9]+$ ]] && total_errors=$((total_errors + realloc))
